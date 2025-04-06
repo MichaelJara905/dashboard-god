@@ -146,7 +146,7 @@ const Sidebar = () => {
           />
         )}
         
-        <div className={`fixed ${showMenu ? "left-0" : "-left-full"} sm:left-7 top-0 sm:w-25 h-screen flex transition-all duration-300 ease-in-out z-50`}>
+        <div className={`fixed ${showMenu ? "left-0" : "-left-full"} sm:left-7 top-0 sm:w-30 h-screen flex transition-all duration-300 ease-in-out z-50`}>
             <nav className='sm:my-10 rounded-r-3xl sm:rounded-3xl w-60 sm:w-40 flex flex-col justify-between bg-black items-center py-6'>
                
                 {/* Logo arriba */}

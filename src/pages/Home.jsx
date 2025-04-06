@@ -59,28 +59,13 @@ const Home = () => {
 
   return (
 
-    <div className="h-auto m-7 sm:ml-40">
-      {/* Sección de la barra de búsqueda */}
-      <div className="flex items-center justify-between gap-2 w-full sm:mt-10">
-        <div className="flex-grow justify-between items-center relative max-w-[68%]">
-          <img src={iconSearch} className="h-4 absolute left-3 top-1/2 transform -translate-y-1/2" alt="Icono de búsqueda" /> 
-            <button>
-              <img src={iconFilter} className="h-4 absolute right-3 top-1/2 transform -translate-y-1/2" alt="Icono de filtrar" />
-            </button>
-          <input type="text" className="w-full py-2 pl-10 pr-10 rounded-lg bg-black/7" style={{ fontFamily: "'Mint Sans', sans-serif" }} placeholder="Buscar..." />
-        </div>
-        <div className="flex items-center">
-          <img src={iconNotification} className="h-4 mr-3" alt="Notificaciones" />
-            <div className="h-10 rounded-lg w-10 bg-black/7"></div>
-            <button>
-            <img src={iconAnguloAbajo} className="h-2 ml-1" alt="Icono de búsqueda" />
-          </button>
-        </div>
-      </div>
+    <div className="h-auto m-7 sm:ml-52 sm:mr-15">
+    {/* Contenedor de saludo + derecha (buscador + stats) */}
+    <div className="flex flex-col lg:flex-row gap-6 mt-10 w-full">
 
-      {/* Sección de saludo */}
-      <div className="flex justify-center items-center rounded-sm w-full h-35 bg-gray-100 mt-10">
-        <div className="ml-10">
+      {/* Columna izquierda: Saludo */}
+      <div className="flex justify-between items-center rounded-sm w-full lg:w-1/2 h-35 bg-gray-100 px-6 py-4">
+        <div>
           <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-xl">Hola Gloria!</h1>
           <p style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-medium">Es bueno verte de nuevo.</p>
         </div>
@@ -89,21 +74,48 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sección de estadísticas */}
-      <div className="flex h-21 mt-10 gap-x-3">
-        <StatCard value="10" label="Testimonios aprobados" />
-        <StatCard value="6" label="Testimonios rechazados" />
-        <StatCard value="10" label="Noticias publicadas" />
+      {/* Columna derecha: buscador y estadísticas */}
+      <div className="flex flex-col gap-4 w-full lg:w-1/2">
+        {/* Barra de búsqueda */}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex-grow relative">
+            <img src={iconSearch} className="h-4 absolute left-3 top-1/2 transform -translate-y-1/2" alt="Icono de búsqueda" />
+            <button>
+              <img src={iconFilter} className="h-4 absolute right-3 top-1/2 transform -translate-y-1/2" alt="Icono de filtrar" />
+            </button>
+            <input
+              type="text"
+              className="w-[75%] py-2 pl-10 pr-10 rounded-lg bg-black/7"
+              style={{ fontFamily: "'Mint Sans', sans-serif" }}
+              placeholder="Buscar..."
+            />
+          </div>
+          <div className="flex items-center">
+            <img src={iconNotification} className="h-4 mr-3" alt="Notificaciones" />
+            <div className="h-10 rounded-lg w-10 bg-black/7"></div>
+            <button>
+              <img src={iconAnguloAbajo} className="h-2 ml-1" alt="Icono de menú" />
+            </button>
+          </div>
+        </div>
+
+        {/* Estadísticas */}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <StatCard value="10" label="Testimonios aprobados" />
+          <StatCard value="6" label="Testimonios rechazados" />
+          <StatCard value="10" label="Noticias publicadas" />
+        </div>
       </div>
+    </div>
 
       {/* Sección de agregar noticia */}
-      <div className="flex justify-center items-center mt-10 w-full h-15 border-2 rounded-lg gap-2">
+      <div className="flex justify-center items-center mt-10 w-full h-15 border-2 rounded-lg gap-2 lg:w-1/2">
         <img src={iconMas} className="h-6" alt="Icono de agregar noticia" />
         <h1 style={{ fontFamily: "'Mint Sans', sans-serif", paddingTop: "4px"}} className="text-lg font-bold">Crear noticia</h1>
       </div>
 
       {/* Sección de testimonios */}
-      <div className="w-full h-auto mt-10">
+      <div className="w-full h-auto mt-10 lg:w-1/2">  
         <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-xl">Testimonios</h1>
         <div className="relative flex gap-7 mt-5 font-bold">
           <button 
