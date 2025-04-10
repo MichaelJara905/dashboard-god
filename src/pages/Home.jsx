@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import Sidebar from "../components/Sidebar";
 import TestimonialCard from "../components/TestimonialCard";
 import StatCard from "../components/StatCard";
+import Estadisticas from "../components/Estadisticas";
 
 // Importando los assets necesarios
 import iconFilter from "/assets/iconFilter.png";
@@ -59,78 +60,46 @@ const Home = () => {
 
   return (
 
-    <div className="h-auto m-7 sm:ml-52 sm:mr-15">
-    {/* Contenedor de saludo + derecha (buscador + stats) */}
-    <div className="flex flex-col lg:flex-row gap-6 mt-10 w-full">
+    <div className="flex gap-17 h-full m-7 mt-10 sm:ml-55 sm:mr-15">
+      
+  
+    {/* Primer contenedor principal */}
+    <div className="w-1/2">
 
       {/* Columna izquierda: Saludo */}
-      <div className="flex justify-between items-center rounded-sm w-full lg:w-1/2 h-35 bg-gray-100 px-6 py-4">
+      <div className="flex items-center justify-center rounded-lg w-full h-51 gap-10 bg-black/7 ">
         <div>
-          <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-xl">Hola Gloria!</h1>
-          <p style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-medium">Es bueno verte de nuevo.</p>
+          <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-3xl">Hola Gloria!</h1>
+          <p style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-medium text-[18px]">Es bueno verte de nuevo.</p>
         </div>
         <div>
-          <img src={imagenBienvenida} className="w-39" alt="Imagen bienvenida" />
+          <img src={imagenBienvenida} className="w-65 mb-8" alt="Imagen bienvenida" />
         </div>
       </div>
-
-      {/* Columna derecha: buscador y estadísticas */}
-      <div className="flex flex-col gap-4 w-full lg:w-1/2">
-        {/* Barra de búsqueda */}
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex-grow relative">
-            <img src={iconSearch} className="h-4 absolute left-3 top-1/2 transform -translate-y-1/2" alt="Icono de búsqueda" />
-            <button>
-              <img src={iconFilter} className="h-4 absolute right-3 top-1/2 transform -translate-y-1/2" alt="Icono de filtrar" />
-            </button>
-            <input
-              type="text"
-              className="w-[75%] py-2 pl-10 pr-10 rounded-lg bg-black/7"
-              style={{ fontFamily: "'Mint Sans', sans-serif" }}
-              placeholder="Buscar..."
-            />
-          </div>
-          <div className="flex items-center">
-            <img src={iconNotification} className="h-4 mr-3" alt="Notificaciones" />
-            <div className="h-10 rounded-lg w-10 bg-black/7"></div>
-            <button>
-              <img src={iconAnguloAbajo} className="h-2 ml-1" alt="Icono de menú" />
-            </button>
-          </div>
-        </div>
-
-        {/* Estadísticas */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <StatCard value="10" label="Testimonios aprobados" />
-          <StatCard value="6" label="Testimonios rechazados" />
-          <StatCard value="10" label="Noticias publicadas" />
-        </div>
-      </div>
-    </div>
 
       {/* Sección de agregar noticia */}
-      <div className="flex justify-center items-center mt-10 w-full h-15 border-2 rounded-lg gap-2 lg:w-1/2">
-        <img src={iconMas} className="h-6" alt="Icono de agregar noticia" />
-        <h1 style={{ fontFamily: "'Mint Sans', sans-serif", paddingTop: "4px"}} className="text-lg font-bold">Crear noticia</h1>
+      <div className="flex justify-center items-center mt-17 w-full h-18 border-2 rounded-lg gap-2">
+        <img src={iconMas} className="h-9" alt="Icono de agregar noticia" />
+        <h1 style={{ fontFamily: "'Mint Sans', sans-serif", paddingTop: "4px"}} className="text-2xl font-bold">Crear noticia</h1>
       </div>
 
       {/* Sección de testimonios */}
-      <div className="w-full h-auto mt-10 lg:w-1/2">  
-        <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-xl">Testimonios</h1>
-        <div className="relative flex gap-7 mt-5 font-bold">
+      <div className="w-full h-auto mt-17">  
+        <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-2xl">Testimonios</h1>
+        <div className="relative flex gap-7 mt-8 font-bold">
           <button 
             ref={(el) => setTabRef("nuevos", el)}
             onClick={() => setActiveTab("nuevos")} 
             style={{ fontFamily: "'Mint Sans', sans-serif" }}
-            className={`pb-2 ${activeTab === "pendientes" ? "text-[#0000004D]" : "text-black"}`}
+            className={` text-lg ${activeTab === "pendientes" ? "text-[#0000004D]" : "text-black"}`}
           >
-            Nuevos
+            Mas nuevos
           </button>
           <button 
             ref={(el) => setTabRef("pendientes", el)}
             onClick={() => setActiveTab("pendientes")} 
             style={{ fontFamily: "'Mint Sans', sans-serif" }}
-            className={`pb-2 ${activeTab === "nuevos" ? "text-[#0000004D]" : "text-black"}`}
+            className={`text-lg ${activeTab === "nuevos" ? "text-[#0000004D]" : "text-black"}`}
           >
             Pendientes de revisión
           </button>
@@ -142,16 +111,58 @@ const Home = () => {
             animate={getIndicatorStyles} // Usamos la versión memorizada
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
-
         </div>
 
-        <div className="flex flex-col mt-2 gap-3">
+        <div className="flex flex-col mt-4 gap-3">
           {testimonios.map((testimonio, index) => (
             <TestimonialCard key={index} {...testimonio} />
           ))}
         </div>
       </div>
+    </div>
 
+    {/* Segundo contenedor principal*/} 
+    <div className="w-1/2 ">
+    
+      {/* Columna derecha: buscador y estadísticas */}
+      <div className="flex flex-col gap-4 w-full h-51">
+
+        {/* Barra de búsqueda */}
+        <div className="flex items-center justify-between gap-2 h-15">
+          <div className="h-full flex flex-1 items-center">
+            <img src={iconSearch} className="h-5 absolute ml-5" alt="Icono de búsqueda" />
+
+            <input
+              type="text"
+              className="w-[77%] h-full py-2 pl-15 pr-10 rounded-lg bg-black/7"
+              style={{ fontFamily: "'Mint Sans', sans-serif" }}
+              placeholder="Buscar..."
+            />
+          </div>
+          <div className="flex items-center ">
+            <img src={iconNotification} className="h-5 mr-3" alt="Notificaciones" />
+            <div className="h-15 rounded-lg w-15 bg-black/7"></div>
+            <button>
+              <img src={iconAnguloAbajo} className="h-3 ml-1" alt="Icono de menú" />
+            </button>
+          </div>
+        </div>
+
+        {/* Estadísticas */}
+        <div className="flex flex-col h-full sm:flex-row gap-7">
+          <StatCard value="10" label="Testimonios aprobados" />
+          <StatCard value="6" label="Testimonios rechazados" />
+          <StatCard value="10" label="Noticias publicadas" />
+        </div>
+      </div>
+
+      
+          <div className="mt-17">
+            <h1 style={{ fontFamily: "'Mint Sans', sans-serif" }} className="font-bold text-2xl mb-5"> Estadisticas </h1>
+            <h1 style={{ fontFamily: "'Quicksand', sans-serif" }} className=" text-lg mb-5"> Tasa de aprobacion de testimonios </h1>
+            <Estadisticas/>
+          </div>
+    </div>
       {/* Sección de la barra lateral */}
       <Sidebar />
     </div>
